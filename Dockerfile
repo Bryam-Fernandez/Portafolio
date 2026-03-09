@@ -10,7 +10,6 @@ COPY src/ /usr/share/nginx/html/
 # Copia otras carpetas importantes que están fuera de src
 COPY public/ /usr/share/nginx/html/public/
 COPY data/ /usr/share/nginx/html/data/
-COPY pages/ /usr/share/nginx/html/pages/
 COPY scripts/ /usr/share/nginx/html/scripts/
 
 # Expone el puerto 80
