@@ -31,6 +31,11 @@
       --mobile-color: #8b5cf6;
       --ai-color: #10b981;
       --web-color: #ef4444;
+      
+      /* Nuevos colores para estados */
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --info-color: #3b82f6;
     }
 
     * {
@@ -259,9 +264,48 @@
       color: #10b981;
     }
 
-.tech-icon.docker {
-    color: #2496ed; 
-}
+    .tech-icon.docker {
+        color: #2496ed; 
+    }
+
+    /* ===== BADGES DE ESTADO ===== */
+    .project-status {
+      margin-bottom: 1rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .status-badge.online {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .status-badge.offline {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .status-badge i {
+      font-size: 0.8rem;
+    }
+
+    .status-badge.in-progress {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.3);
+    }
 
     /* ===== SECCIÓN DE FILTROS ===== */
     .filters-section {
@@ -589,6 +633,15 @@
 
     .tech-badge.react {
       background: linear-gradient(135deg, #61dafb, #21a1f1);
+    }
+
+    /* NUEVO: Badge para Docker */
+    .tech-badge.docker {
+      background: linear-gradient(135deg, #2496ed, #1d63a8);
+    }
+
+    .tech-badge.jwt {
+      background: linear-gradient(135deg, #000000, #333333);
     }
 
     /* ===== BOTONES MEJORADOS ===== */
@@ -924,23 +977,24 @@
     </p>
 
     <div class="tech-stack-preview">
-    <div class="tech-icon java fade-in delay-1">
+      <div class="tech-icon java fade-in delay-1">
         <i class="devicon-java-plain"></i>
-    </div>
-    <div class="tech-icon spring fade-in delay-1">
+      </div>
+      <div class="tech-icon spring fade-in delay-1">
         <i class="devicon-spring-plain"></i>
-    </div>
-    <div class="tech-icon sql fade-in delay-3">
+      </div>
+      <div class="tech-icon sql fade-in delay-3">
         <i class="devicon-mysql-plain"></i>
-    </div>
-    <div class="tech-icon ai fade-in delay-3">
+      </div>
+      <div class="tech-icon ai fade-in delay-3">
         <i class="fas fa-brain"></i>
-    </div>
-    <div class="tech-icon security fade-in delay-3">
+      </div>
+      <div class="tech-icon security fade-in delay-3">
         <i class="fas fa-shield-halved"></i>
-    </div>
-    <div class="tech-icon docker fade-in delay-2">
+      </div>
+      <div class="tech-icon docker fade-in delay-2">
         <i class="devicon-docker-plain"></i>
+      </div>
     </div>
   </section>
 
@@ -985,7 +1039,7 @@
     <h2 class="section-title fade-in">Mis Proyectos Destacados</h2>
 
     <div class="projects-grid">
-      <!-- PROYECTO 1: Nutrimama -->
+      <!-- PROYECTO 1: Nutrimama (SIN INTERNET) -->
       <article class="project-card fade-in" data-category="mobile ai PC web">
         <div class="project-header">
           <i class="fas fa-heartbeat project-icon"></i>
@@ -1002,20 +1056,26 @@
           </div>
         </div>
 
-        
-
         <div class="project-content">
+          <!-- BADGE DE ESTADO: Sin internet -->
+          <div class="project-status">
+            <span class="status-badge offline">
+              <i class="fas fa-cloud"></i>
+              Proyecto sin internet
+            </span>
+          </div>
+
           <h3 class="project-title">
             <i class="fas fa-baby"></i>
             Nutrimama - Asistente IA para Embarazadas
           </h3>
 
-           <div class="project-status">
-        <span class="status-badge in-progress">
-            <i class="fas fa-spinner fa-pulse"></i>
-            App in progress
-        </span>
-    </div>
+          <div class="project-status">
+            <span class="status-badge in-progress">
+              <i class="fas fa-spinner fa-pulse"></i>
+              App in progress
+            </span>
+          </div>
 
           <p class="project-description">
             Plataforma multiplataforma con inteligencia artificial para seguimiento integral del embarazo.
@@ -1070,7 +1130,7 @@
         </div>
       </article>
 
-      <!-- PROYECTO 2: App Clima -->
+      <!-- PROYECTO 2: WeatherFlow (SIN INTERNET) -->
       <article class="project-card fade-in" data-category="mobile">
         <div class="project-header">
           <i class="fas fa-cloud-sun-rain project-icon"></i>
@@ -1082,12 +1142,18 @@
         </div>
 
         <div class="project-content">
+          <!-- BADGE DE ESTADO: Sin internet -->
+          <div class="project-status">
+            <span class="status-badge offline">
+              <i class="fas fa-cloud"></i>
+              Proyecto sin internet
+            </span>
+          </div>
+
           <h3 class="project-title">
             <i class="fas fa-temperature-high"></i>
             WeatherFlow - App de Clima Inteligente
           </h3>
-
-          
 
           <p class="project-description">
             Aplicación móvil que utiliza APIs meteorológicas para pronósticos precisos.
@@ -1130,7 +1196,7 @@
         </div>
       </article>
 
-      <!-- PROYECTO 2: App Clima -->
+      <!-- PROYECTO 3: SaludVit (EN INTERNET) -->
       <article class="project-card fade-in" data-category="web">
         <div class="project-header">
           <i class="fas fa-hospital project-icon"></i>
@@ -1142,21 +1208,29 @@
         </div>
 
         <div class="project-content">
+          <!-- BADGE DE ESTADO: En internet (DESTACADO) -->
+          <div class="project-status">
+            <span class="status-badge online">
+              <i class="fas fa-globe"></i>
+              Proyecto en internet 🚀
+            </span>
+          </div>
+
           <h3 class="project-title">
             <i class="fas fa-hospital"></i>
-            SaludVit - Sistema web de gestion de clínicas
+            SaludVit - Sistema web de gestión de clínicas
           </h3>
 
-           <div class="project-status">
-        <span class="status-badge in-progress">
-            <i class="fas fa-spinner fa-pulse"></i>
-            App in progress
-        </span>
-    </div>
+          <div class="project-status">
+            <span class="status-badge in-progress">
+              <i class="fas fa-spinner fa-pulse"></i>
+              App in progress
+            </span>
+          </div>
 
           <p class="project-description">
             Aplicación web para gestión de clínicas médicas.
-            Sistema de administración de pacientes, medicos, citas, tratamientos y expedientes.
+            Sistema de administración de pacientes, médicos, citas, tratamientos y expedientes.
           </p>
 
           <div class="project-meta">
@@ -1171,13 +1245,16 @@
           </div>
 
           <div class="tech-stack">
-         <span class="tech-badge java">
+            <span class="tech-badge java">
               <i class="devicon-java-plain"></i> Java
+            </span>
+            <span class="tech-badge spring">
+              <i class="devicon-spring-plain"></i> Spring Boot
             </span>
             <span class="tech-badge sql">
               <i class="devicon-mysql-plain"></i> MySQL
             </span>
-            <span class="tech-badge JWT">
+            <span class="tech-badge jwt">
               <i class="devicon-jwt-plain"></i> JWT
             </span>
             <span class="tech-badge css">
@@ -1188,6 +1265,10 @@
             </span>
             <span class="tech-badge js">
               <i class="devicon-javascript-plain"></i> JavaScript
+            </span>
+            <!-- NUEVO: Badge de Docker -->
+            <span class="tech-badge docker">
+              <i class="devicon-docker-plain"></i> Docker
             </span>
           </div>
 
@@ -1203,7 +1284,7 @@
           </div>
         </div>
       </article>
-
+    </div>
   </section>
 
   <!-- ESTADÍSTICAS -->
@@ -1222,7 +1303,7 @@
           <div class="stat-icon">
             <i class="fas fa-code"></i>
           </div>
-          <div class="stat-number" data-count="9">0+</div>
+          <div class="stat-number" data-count="10">0+</div>
           <div class="stat-label">Tecnologías</div>
         </div>
 
