@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Portafolio Interactivo",
+        "description": "Mi propio portafolio desarrollado con HTML, CSS y JavaScript puro.",
+        "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+        "image": "../public/images/projects/portafolio.jpg",
+        "github": "https://github.com/tuusuario/portafolio",
+        "demo": "https://bryam-fernandez.netlify.app",
+        "features": ["Diseño moderno", "Responsive", "Optimizado", "Modo oscuro"]
+    },
+    {
+        "id": 2,
+        "title": "Sistema de Gestión",
+        "description": "Aplicación web para gestión de tareas y proyectos.",
+        "technologies": ["React", "Node.js", "MongoDB", "Express"],
+        "image": "../public/images/projects/sistema.jpg",
+        "github": "https://github.com/tuusuario/sistema-gestion",
+        "demo": "https://sistema-gestion-demo.vercel.app",
+        "features": ["CRUD completo", "Autenticación", "Dashboard", "API REST"]
+    },
+    {
+        "id": 3,
+        "title": "E-commerce Básico",
+        "description": "Tienda online con carrito de compras y checkout.",
+        "technologies": ["JavaScript", "LocalStorage", "CSS Grid", "Flexbox"],
+        "image": "../public/images/projects/ecommerce.jpg",
+        "github": "https://github.com/tuusuario/ecommerce",
+        "demo": "https://ecommerce-demo.netlify.app",
+        "features": ["Carrito dinámico", "Filtros", "Responsive", "Sin backend"]
+    }
+]

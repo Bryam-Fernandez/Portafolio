@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio Técnico | Bryam Fernandez</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --accent: #d4af37;
+      --accent-light: #fbbf24;
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --dark-card-hover: #253044;
+      --border-color: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --backend-color: #f59e0b;
+      --desktop-color: #3b82f6;
+      --mobile-color: #8b5cf6;
+      --ai-color: #10b981;
+      --web-color: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at 10% 20%,
+          rgba(37, 99, 235, 0.05) 0%,
+          transparent 25%),
+        radial-gradient(circle at 90% 80%,
+          rgba(212, 175, 55, 0.05) 0%,
+          transparent 25%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ===== NAVEGACIÓN MEJORADA ===== */
+    .main-nav {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 1.2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-icon {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .logo-text {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-menu a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-menu a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-menu a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-menu a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 2px;
+    }
+
+    .nav-contact-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .nav-contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    /* ===== HEADER MEJORADO ===== */
+    .hero-section {
+      text-align: center;
+      padding: 5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .hero-title {
+      font-size: 3.8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .tech-stack-preview {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .tech-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .tech-icon:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+      transform: translateY(-5px);
+      border-color: var(--border-color);
+    }
+
+    .tech-icon.java {
+      color: #f89820;
+    }
+
+    .tech-icon.python {
+      color: #3776ab;
+    }
+
+    .tech-icon.cpp {
+      color: #00599c;
+    }
+
+    .tech-icon.sql {
+      color: #4479a1;
+    }
+
+    .tech-icon.spring {
+      color: #6db33f;
+    }
+
+    .tech-icon.ai {
+      color: #10b981;
+    }
+
+.tech-icon.docker {
+    color: #2496ed; 
+}
+
+    /* ===== SECCIÓN DE FILTROS ===== */
+    .filters-section {
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 3rem 0 4rem;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .filters-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .filters-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .filters-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .filter-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid var(--border-color);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .filter-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .filter-card.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-color: transparent;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .filter-card.active .filter-icon {
+      color: white;
+    }
+
+    .filter-icon {
+      font-size: 2.5rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .filter-card.active .filter-text {
+      color: white;
+    }
+
+    .filter-text {
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .filter-count {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    /* ===== GRID DE PROYECTOS MEJORADO ===== */
+    .projects-section {
+      margin: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+      text-align: center;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 5rem;
+    }
+
+    /* ===== TARJETAS DE PROYECTO MEJORADAS ===== */
+    .project-card {
+      background: var(--dark-card);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid var(--border-color);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      background: var(--dark-card-hover);
+    }
+
+    .project-header {
+      height: 200px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), transparent);
+    }
+
+    .project-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-icon {
+      font-size: 5.5rem;
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    .project-categories {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .category-badge {
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .category-pc {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+    }
+
+    .category-mobile {
+      background: rgba(139, 92, 246, 0.2);
+      color: #a78bfa;
+    }
+
+    .category-ai {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+    }
+
+    .category-web {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+
+    .project-content {
+      padding: 2.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .project-title i {
+      color: var(--accent);
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+      font-size: 1.05rem;
+      flex-grow: 1;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .meta-item i {
+      color: var(--accent);
+    }
+
+    /* ===== TECNOLOGÍAS MEJORADAS ===== */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .tech-badge {
+      padding: 0.6rem 1.1rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .tech-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .tech-badge.java {
+      background: linear-gradient(135deg, #f89820, #e76f00);
+    }
+
+    .tech-badge.spring {
+      background: linear-gradient(135deg, #6db33f, #4a8c20);
+    }
+
+    .tech-badge.sql {
+      background: linear-gradient(135deg, #4479a1, #2c5a7a);
+    }
+
+    .tech-badge.js {
+      background: linear-gradient(135deg, #f7df1e, #d6ba00);
+      color: #333;
+    }
+
+    .tech-badge.html {
+      background: linear-gradient(135deg, #e34c26, #c13500);
+    }
+
+    .tech-badge.css {
+      background: linear-gradient(135deg, #264de4, #1a36b0);
+    }
+
+    .tech-badge.ai {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    .tech-badge.qt {
+      background: linear-gradient(135deg, #41cd52, #2ea83c);
+    }
+
+    .tech-badge.swift {
+      background: linear-gradient(135deg, #f05138, #d43a22);
+    }
+
+    .tech-badge.api {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+
+    .tech-badge.react {
+      background: linear-gradient(135deg, #61dafb, #21a1f1);
+    }
+
+    /* ===== BOTONES MEJORADOS ===== */
+    .project-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .project-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.9rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-demo {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-code {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .btn-demo:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-code:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* ===== ESTADÍSTICAS ANIMADAS ===== */
+    .stats-section {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 25px;
+      padding: 4rem;
+      margin: 5rem 0;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 3rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .stat-card:hover {
+      border-color: var(--primary);
+      background: rgba(37, 99, 235, 0.05);
+      transform: translateY(-5px);
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* ===== FOOTER MEJORADO ===== */
+    .footer {
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid var(--border-color);
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-tagline {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-copyright {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      }
+
+      .hero-title {
+        font-size: 3.2rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto 4rem;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+      }
+
+      .nav-menu {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .filters-section {
+        padding: 1.5rem;
+      }
+
+      .stats-section {
+        padding: 2.5rem;
+      }
+
+      .project-actions {
+        flex-direction: column;
+      }
+
+      .nav-contact-btn span {
+        display: none;
+      }
+
+      .nav-contact-btn {
+        padding: 0.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .tech-stack-preview {
+        gap: 0.5rem;
+      }
+
+      .tech-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .filters-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .project-header {
+        height: 180px;
+      }
+    }
+
+    /* ===== ANIMACIONES ===== */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(-50%);
+      }
+
+      50% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVEGACIÓN MEJORADA -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="logo-text">Bryam Fernandez</div>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        <a href="proyectos.html" class="active"><i class="fas fa-project-diagram"></i> Proyectos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section container">
+    <div class="hero-badge fade-in">
+      <i class="fas fa-star"></i>
+      Portafolio Técnico
+    </div>
+    <h1 class="hero-title fade-in">
+      Soluciones Innovadoras en Desarrollo
+    </h1>
+    <p class="hero-subtitle fade-in">
+      Especializado en sistemas backend, aplicaciones web/móvil con IA,
+      y soluciones robustas utilizando las tecnologías más modernas del mercado.
+    </p>
+
+    <div class="tech-stack-preview">
+    <div class="tech-icon java fade-in delay-1">
+        <i class="devicon-java-plain"></i>
+    </div>
+    <div class="tech-icon spring fade-in delay-1">
+        <i class="devicon-spring-plain"></i>
+    </div>
+    <div class="tech-icon sql fade-in delay-3">
+        <i class="devicon-mysql-plain"></i>
+    </div>
+    <div class="tech-icon ai fade-in delay-3">
+        <i class="fas fa-brain"></i>
+    </div>
+    <div class="tech-icon security fade-in delay-3">
+        <i class="fas fa-shield-halved"></i>
+    </div>
+    <div class="tech-icon docker fade-in delay-2">
+        <i class="devicon-docker-plain"></i>
+    </div>
+  </section>
+
+  <!-- FILTROS DE CATEGORÍAS -->
+  <section class="container">
+    <div class="filters-section fade-in">
+      <div class="filters-header">
+        <h2>Explora por Categoría</h2>
+        <p>Selecciona el tipo de proyecto que deseas ver</p>
+      </div>
+
+      <div class="filters-grid">
+        <div class="filter-card active" data-filter="all">
+          <i class="fas fa-layer-group filter-icon"></i>
+          <div class="filter-text">Todos</div>
+          <div class="filter-count">6</div>
+        </div>
+
+        <div class="filter-card" data-filter="mobile">
+          <i class="fas fa-mobile-alt filter-icon"></i>
+          <div class="filter-text">Móvil</div>
+          <div class="filter-count">2</div>
+        </div>
+
+        <div class="filter-card" data-filter="ai">
+          <i class="fas fa-brain filter-icon"></i>
+          <div class="filter-text">Inteligencia Artificial</div>
+          <div class="filter-count">2</div>
+        </div>
+
+        <div class="filter-card" data-filter="web">
+          <i class="fas fa-globe filter-icon"></i>
+          <div class="filter-text">Web</div>
+          <div class="filter-count">4</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE PROYECTOS -->
+  <section class="projects-section container">
+    <h2 class="section-title fade-in">Mis Proyectos Destacados</h2>
+
+    <div class="projects-grid">
+      <!-- PROYECTO 1: Nutrimama -->
+      <article class="project-card fade-in" data-category="mobile ai PC web">
+        <div class="project-header">
+          <i class="fas fa-heartbeat project-icon"></i>
+          <div class="project-categories">
+            <span class="category-badge category-mobile">
+              <i class="fas fa-mobile-alt"></i> Móvil
+            </span>
+            <span class="category-badge category-ai">
+              <i class="fas fa-brain"></i> IA
+            </span>
+            <span class="category-badge category-web">
+              <i class="fas fa-globe"></i> Web
+            </span>
+          </div>
+        </div>
+
+        
+
+        <div class="project-content">
+          <h3 class="project-title">
+            <i class="fas fa-baby"></i>
+            Nutrimama - Asistente IA para Embarazadas
+          </h3>
+
+           <div class="project-status">
+        <span class="status-badge in-progress">
+            <i class="fas fa-spinner fa-pulse"></i>
+            App in progress
+        </span>
+    </div>
+
+          <p class="project-description">
+            Plataforma multiplataforma con inteligencia artificial para seguimiento integral del embarazo.
+            Sistema de recomendaciones personalizadas, calendario de actividades y monitoreo de salud materna.
+          </p>
+
+          <div class="project-meta">
+            <div class="meta-item">
+              <i class="fas fa-calendar-alt"></i>
+              <span>2025</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span>2 meses</span>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="tech-badge java">
+              <i class="devicon-java-plain"></i> Java
+            </span>
+            <span class="tech-badge spring">
+              <i class="devicon-spring-plain"></i> Spring Boot
+            </span>
+            <span class="tech-badge sql">
+              <i class="devicon-mysql-plain"></i> MySQL
+            </span>
+            <span class="tech-badge css">
+              <i class="devicon-css3-plain"></i> CSS
+            </span>
+            <span class="tech-badge html">
+              <i class="devicon-html5-plain"></i> Html
+            </span>
+            <span class="tech-badge js">
+              <i class="devicon-javascript-plain"></i> JavaScript
+            </span>
+            <span class="tech-badge ai">
+              <i class="fas fa-brain"></i> Ollama IA
+            </span>
+          </div>
+
+          <div class="project-actions">
+            <a href="progreso.html" class="project-btn btn-demo">
+              <i class="fas fa-play-circle"></i>
+              Ver Demo
+            </a>
+            <a href="https://github.com/Bryam-Fernandez/Nutrimama" class="project-btn btn-code">
+              <i class="fab fa-github"></i>
+              Ver Código
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROYECTO 2: App Clima -->
+      <article class="project-card fade-in" data-category="mobile">
+        <div class="project-header">
+          <i class="fas fa-cloud-sun-rain project-icon"></i>
+          <div class="project-categories">
+            <span class="category-badge category-mobile">
+              <i class="fas fa-mobile-alt"></i> Móvil
+            </span>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <h3 class="project-title">
+            <i class="fas fa-temperature-high"></i>
+            WeatherFlow - App de Clima Inteligente
+          </h3>
+
+          
+
+          <p class="project-description">
+            Aplicación móvil que utiliza APIs meteorológicas para pronósticos precisos.
+            Interfaz intuitiva con gráficos interactivos y alertas personalizadas.
+          </p>
+
+          <div class="project-meta">
+            <div class="meta-item">
+              <i class="fas fa-calendar-alt"></i>
+              <span>2026</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span>1 mes</span>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="tech-badge swift">
+              <i class="devicon-swift-plain"></i> Swift
+            </span>
+            <span class="tech-badge api">
+              <i class="fas fa-cloud"></i> REST API
+            </span>
+            <span class="tech-badge css">
+              <i class="devicon-css3-plain"></i> SwiftUI
+            </span>
+          </div>
+
+          <div class="project-actions">
+            <a href="progreso.html" class="project-btn btn-demo">
+              <i class="fas fa-mobile-alt"></i>
+              Ver App
+            </a>
+            <a href="https://github.com/DiegoCastilla12/ProyectoFinalMoviles2" class="project-btn btn-code">
+              <i class="fab fa-github"></i>
+              Ver Código
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROYECTO 2: App Clima -->
+      <article class="project-card fade-in" data-category="web">
+        <div class="project-header">
+          <i class="fas fa-hospital project-icon"></i>
+          <div class="project-categories">
+            <span class="category-badge category-web">
+              <i class="fas fa-globe"></i> web
+            </span>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <h3 class="project-title">
+            <i class="fas fa-hospital"></i>
+            SaludVit - Sistema web de gestion de clínicas
+          </h3>
+
+           <div class="project-status">
+        <span class="status-badge in-progress">
+            <i class="fas fa-spinner fa-pulse"></i>
+            App in progress
+        </span>
+    </div>
+
+          <p class="project-description">
+            Aplicación web para gestión de clínicas médicas.
+            Sistema de administración de pacientes, medicos, citas, tratamientos y expedientes.
+          </p>
+
+          <div class="project-meta">
+            <div class="meta-item">
+              <i class="fas fa-calendar-alt"></i>
+              <span>2025</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span>2 meses</span>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+         <span class="tech-badge java">
+              <i class="devicon-java-plain"></i> Java
+            </span>
+            <span class="tech-badge sql">
+              <i class="devicon-mysql-plain"></i> MySQL
+            </span>
+            <span class="tech-badge JWT">
+              <i class="devicon-jwt-plain"></i> JWT
+            </span>
+            <span class="tech-badge css">
+              <i class="devicon-css3-plain"></i> CSS
+            </span>
+            <span class="tech-badge html">
+              <i class="devicon-html5-plain"></i> Html
+            </span>
+            <span class="tech-badge js">
+              <i class="devicon-javascript-plain"></i> JavaScript
+            </span>
+          </div>
+
+          <div class="project-actions">
+            <a href="https://saludvital-uubz.onrender.com" class="project-btn btn-demo">
+              <i class="fas fa-mobile-alt"></i>
+              Ver App
+            </a>
+            <a href="https://github.com/Bryam-Fernandez/SaludVital" class="project-btn btn-code">
+              <i class="fab fa-github"></i>
+              Ver Código
+            </a>
+          </div>
+        </div>
+      </article>
+
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <section class="container">
+    <div class="stats-section fade-in">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <div class="stat-number" data-count="3">0</div>
+          <div class="stat-label">Proyectos Completados</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="stat-number" data-count="9">0+</div>
+          <div class="stat-label">Tecnologías</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Plataformas Diferentes</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <div class="stat-number" data-count="3">0</div>
+          <div class="stat-label">Bases de Datos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">Bryam Fernandez</div>
+          <p class="footer-tagline">
+            Desarrollador especializado en crear soluciones innovadoras
+            utilizando las tecnologías más modernas del mercado.
+          </p>
+          <div class="footer-social">
+            <a href="https://github.com/Bryam-Fernandez" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem;">
+            <i class="fas fa-map-marker-alt"></i> Enlaces Rápidos
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="index.html"
+                style="color: var(--text-secondary); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
+                <i class="fas fa-chevron-right"></i> Inicio
+              </a></li>
+            <li><a href="proyectos.html"
+                style="color: var(--accent); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
+                <i class="fas fa-chevron-right"></i> Proyectos
+              </a></li>
+            <li><a href="#habilidades"
+                style="color: var(--text-secondary); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
+                <i class="fas fa-chevron-right"></i> Habilidades
+              </a></li>
+            <li><a href="#contacto"
+                style="color: var(--text-secondary); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
+                <i class="fas fa-chevron-right"></i> Contacto
+              </a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem;">
+            <i class="fas fa-envelope"></i> Contacto: 
+          </h3>
+          <p style="color: var(--text-muted); line-height: 1.6;">
+            <i class="fas fa-envelope"></i> bryamfernandezuriarte22@gmail.com<br>
+            <i class="fas fa-phone"></i> +51 952 028 870<br>
+            <i class="fas fa-map-marker-alt"></i> Lima, Perú
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        © 2024 Bryam Fernandez. Todos los derechos reservados.
+        Desarrollado con <i class="fas fa-heart" style="color: var(--accent);"></i> y código.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Configuración de filtros
+      const filterCards = document.querySelectorAll('.filter-card');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterCards.forEach(card => {
+        card.addEventListener('click', function () {
+          const filter = this.getAttribute('data-filter');
+
+          // Actualizar filtros activos
+          filterCards.forEach(c => c.classList.remove('active'));
+          this.classList.add('active');
+
+          // Filtrar proyectos
+          projectCards.forEach(project => {
+            const categories = project.getAttribute('data-category').split(' ');
+
+            if (filter === 'all' || categories.includes(filter)) {
+              project.style.display = 'flex';
+              setTimeout(() => {
+                project.style.opacity = '1';
+                project.style.transform = 'translateY(0) scale(1)';
+              }, 10);
+            } else {
+              project.style.opacity = '0';
+              project.style.transform = 'translateY(20px) scale(0.95)';
+              setTimeout(() => {
+                project.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      });
+
+      // Animación de estadísticas
+      const statNumbers = document.querySelectorAll('.stat-number');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const statNumber = entry.target;
+            const target = parseInt(statNumber.getAttribute('data-count'));
+            const isPlus = statNumber.textContent.includes('+');
+            let current = 0;
+            const increment = target / 50;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                clearInterval(timer);
+                statNumber.textContent = isPlus ? target + '+' : target;
+              } else {
+                statNumber.textContent = Math.floor(current);
+              }
+            }, 30);
+
+            observer.unobserve(statNumber);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      statNumbers.forEach(stat => observer.observe(stat));
+
+      // Animación de entrada mejorada
+      const fadeElements = document.querySelectorAll('.fade-in');
+
+      fadeElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 100 + index * 100);
+      });
+
+      // Actualizar año en footer
+      const yearSpan = document.querySelector('.footer-copyright');
+      if (yearSpan) {
+        const currentYear = new Date().getFullYear();
+        yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', currentYear);
+      }
+
+      // Efecto hover para tarjetas
+      projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.zIndex = '10';
+        });
+
+        card.addEventListener('mouseleave', () => {
+          setTimeout(() => {
+            card.style.zIndex = '1';
+          }, 300);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

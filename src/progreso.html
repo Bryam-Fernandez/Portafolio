@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En Progreso - SaludVit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .icon {
+            font-size: 80px;
+            color: #667eea;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        p { color: #666; line-height: 1.6; margin-bottom: 20px; }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn:hover { background: #764ba2; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        <h1>🚧 En Progreso</h1>
+        <p>Estamos subiendo <strong>SaludVit</strong> a internet. Muy pronto podrás verla en acción. ¡Gracias por tu paciencia!</p>
+        <a href="proyectos.html" class="btn">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+        <a href="https://github.com/Bryam-Fernandez/SaludVital" class="btn" style="background: #333;">
+            <i class="fab fa-github"></i> Ver código
+        </a>
+    </div>
+</body>
+</html>
