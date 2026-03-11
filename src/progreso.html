@@ -1,69 +1,201 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En Progreso - SaludVit</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>En Progreso | Bryam Fernández</title>
+    <meta name="description" content="Estamos subiendo SaludVit a internet. Muy pronto podrás verla en acción.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bg: '#030305',
+                        surface: '#0a0a0f',
+                        border: '#1f1f2e',
+                        accent: '#3b82f6',
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 20px;
+            background-color: #030305;
+            color: #e4e4e7;
+            overflow: hidden;
         }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 400px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        
+        /* Background Grid Pattern */
+        .bg-grid-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
-        .icon {
-            font-size: 80px;
-            color: #667eea;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
+
+        /* Modern Bento Card */
+        .modern-card {
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.8) 0%, rgba(10, 10, 15, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+        /* Glowing Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
         }
-        h1 { color: #333; margin-bottom: 10px; }
-        p { color: #666; line-height: 1.6; margin-bottom: 20px; }
-        .btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 5px;
+
+        .progress-bar-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 999px;
+            height: 6px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .btn:hover { background: #764ba2; }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #818cf8);
+            width: 65%; /* Simulated progress */
+            border-radius: 999px;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            animation: progressPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
     </style>
 </head>
-<body>
-    <div class="card">
-        <div class="icon">
-            <i class="fas fa-cloud-upload-alt"></i>
+<body class="antialiased min-h-screen flex items-center justify-center p-6">
+
+    <!-- Background Elements -->
+    <div class="bg-grid-pattern"></div>
+    <div class="glow-orb bg-blue-600 w-[500px] h-[500px] top-[-10%] left-[-10%] animate-blob"></div>
+    <div class="glow-orb bg-indigo-600 w-[400px] h-[400px] bottom-[-10%] right-[-10%] animate-blob" style="animation-delay: 2s;"></div>
+
+    <main class="w-full max-w-xl animate-fade-in-up">
+        
+        <div class="modern-card p-10 md:p-16 text-center relative">
+            <!-- Decorative Icon -->
+            <div class="relative w-24 h-24 mx-auto mb-10">
+                <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+                <div class="relative w-full h-full rounded-2xl bg-surface border border-border flex items-center justify-center">
+                    <i data-lucide="cloud-upload" class="w-10 h-10 text-blue-400"></i>
+                </div>
+                <!-- Spinning ring -->
+                <div class="absolute -inset-2 border-2 border-dashed border-blue-500/20 rounded-full animate-spin-slow"></div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-mono text-blue-400 mb-6 uppercase tracking-widest">
+                Deployment in progress
+            </div>
+
+            <h1 class="font-display text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                Subiendo <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">SaludVit.</span>
+            </h1>
+
+            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-10">
+                Estamos configurando los servidores y desplegando los contenedores. Muy pronto podrás ver la plataforma en acción.
+            </p>
+
+            <!-- Progress Indicator -->
+            <div class="mb-12">
+                <div class="flex justify-between text-xs font-mono text-zinc-500 mb-3">
+                    <span>STATUS: DEPLOYING</span>
+                    <span>65%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="proyectos.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-black bg-white rounded-xl hover:bg-zinc-200 transition-colors gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver
+                </a>
+                <a href="https://github.com/Bryam-Fernandez/SaludVital" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-surface border border-border rounded-xl hover:bg-zinc-800 transition-colors gap-2">
+                    <i data-lucide="github" class="w-4 h-4"></i> Ver Código
+                </a>
+            </div>
+
+            <!-- Technical Logs (Decorative) -->
+            <div class="mt-12 pt-8 border-t border-border flex flex-col gap-2">
+                <div class="flex items-center gap-3 text-[10px] font-mono text-zinc-600">
+                    <span class="text-blue-500">[INFO]</span> Initializing Spring Boot application context...
+                </div>
+                <div class="flex items-center gap-3 text-[10px] font-mono text-zinc-600">
+                    <span class="text-blue-500">[INFO]</span> Connecting to PostgreSQL database cluster...
+                </div>
+                <div class="flex items-center gap-3 text-[10px] font-mono text-zinc-600">
+                    <span class="text-emerald-500">[SUCCESS]</span> Docker container health check passed.
+                </div>
+            </div>
         </div>
-        <h1>🚧 En Progreso</h1>
-        <p>Estamos subiendo <strong>SaludVit</strong> a internet. Muy pronto podrás verla en acción. ¡Gracias por tu paciencia!</p>
-        <a href="proyectos.html" class="btn">
-            <i class="fas fa-arrow-left"></i> Volver
-        </a>
-        <a href="https://github.com/Bryam-Fernandez/SaludVital" class="btn" style="background: #333;">
-            <i class="fab fa-github"></i> Ver código
-        </a>
-    </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center">
+            <p class="text-zinc-600 text-xs font-mono">
+                &copy; <span id="year"></span> Bryam Fernández. Engineered with precision.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

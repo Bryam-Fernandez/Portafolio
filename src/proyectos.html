@@ -1,1493 +1,417 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio Técnico | Bryam Fernandez</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-light: #3b82f6;
-      --primary-dark: #1d4ed8;
-      --accent: #d4af37;
-      --accent-light: #fbbf24;
-      --dark-bg: #0f172a;
-      --dark-card: #1e293b;
-      --dark-card-hover: #253044;
-      --border-color: #334155;
-      --text-primary: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
-
-      --backend-color: #f59e0b;
-      --desktop-color: #3b82f6;
-      --mobile-color: #8b5cf6;
-      --ai-color: #10b981;
-      --web-color: #ef4444;
-      
-      /* Nuevos colores para estados */
-      --success-color: #10b981;
-      --warning-color: #f59e0b;
-      --info-color: #3b82f6;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", sans-serif;
-    }
-
-    body {
-      background: var(--dark-bg);
-      color: var(--text-primary);
-      min-height: 100vh;
-      line-height: 1.6;
-      background-image: radial-gradient(circle at 10% 20%,
-          rgba(37, 99, 235, 0.05) 0%,
-          transparent 25%),
-        radial-gradient(circle at 90% 80%,
-          rgba(212, 175, 55, 0.05) 0%,
-          transparent 25%),
-        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* ===== NAVEGACIÓN MEJORADA ===== */
-    .main-nav {
-      background: rgba(15, 23, 42, 0.95);
-      padding: 1.2rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .logo-icon {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: white;
-    }
-
-    .logo-text {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .nav-menu a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-
-    .nav-menu a:hover {
-      color: var(--text-primary);
-    }
-
-    .nav-menu a.active {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .nav-menu a.active::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      border-radius: 2px;
-    }
-
-    .nav-contact-btn {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    .nav-contact-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-    }
-
-    /* ===== HEADER MEJORADO ===== */
-    .hero-section {
-      text-align: center;
-      padding: 5rem 0 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(212, 175, 55, 0.1);
-      color: var(--accent);
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-    }
-
-    .hero-title {
-      font-size: 3.8rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      max-width: 800px;
-      margin: 0 auto 3rem;
-      line-height: 1.8;
-    }
-
-    .tech-stack-preview {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-
-    .tech-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--text-secondary);
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
-    }
-
-    .tech-icon:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--accent);
-      transform: translateY(-5px);
-      border-color: var(--border-color);
-    }
-
-    .tech-icon.java {
-      color: #f89820;
-    }
-
-    .tech-icon.python {
-      color: #3776ab;
-    }
-
-    .tech-icon.cpp {
-      color: #00599c;
-    }
-
-    .tech-icon.sql {
-      color: #4479a1;
-    }
-
-    .tech-icon.spring {
-      color: #6db33f;
-    }
-
-    .tech-icon.ai {
-      color: #10b981;
-    }
-
-    .tech-icon.docker {
-        color: #2496ed; 
-    }
-
-    /* ===== BADGES DE ESTADO ===== */
-    .project-status {
-      margin-bottom: 1rem;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .status-badge.online {
-      background: rgba(16, 185, 129, 0.15);
-      color: #10b981;
-      border-color: rgba(16, 185, 129, 0.3);
-    }
-
-    .status-badge.offline {
-      background: rgba(245, 158, 11, 0.15);
-      color: #f59e0b;
-      border-color: rgba(245, 158, 11, 0.3);
-    }
-
-    .status-badge i {
-      font-size: 0.8rem;
-    }
-
-    .status-badge.in-progress {
-      background: rgba(59, 130, 246, 0.15);
-      color: #60a5fa;
-      border-color: rgba(59, 130, 246, 0.3);
-    }
-
-    /* ===== SECCIÓN DE FILTROS ===== */
-    .filters-section {
-      background: rgba(30, 41, 59, 0.5);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin: 3rem 0 4rem;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-    }
-
-    .filters-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .filters-header h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .filters-header p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .filters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    .filter-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 2px solid var(--border-color);
-      border-radius: 15px;
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .filter-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      background: rgba(37, 99, 235, 0.1);
-    }
-
-    .filter-card.active {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-color: transparent;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-    }
-
-    .filter-card.active .filter-icon {
-      color: white;
-    }
-
-    .filter-icon {
-      font-size: 2.5rem;
-      color: var(--text-secondary);
-      transition: all 0.3s ease;
-    }
-
-    .filter-card.active .filter-text {
-      color: white;
-    }
-
-    .filter-text {
-      font-weight: 600;
-      color: var(--text-secondary);
-      transition: all 0.3s ease;
-    }
-
-    .filter-count {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text-secondary);
-      padding: 0.2rem 0.6rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-top: 0.5rem;
-    }
-
-    /* ===== GRID DE PROYECTOS MEJORADO ===== */
-    .projects-section {
-      margin: 4rem 0;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 3rem;
-      text-align: center;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 5rem;
-    }
-
-    /* ===== TARJETAS DE PROYECTO MEJORADAS ===== */
-    .project-card {
-      background: var(--dark-card);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid var(--border-color);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .project-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: var(--primary);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-      background: var(--dark-card-hover);
-    }
-
-    .project-header {
-      height: 200px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), transparent);
-    }
-
-    .project-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 5rem;
-      color: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover .project-icon {
-      font-size: 5.5rem;
-      color: rgba(255, 255, 255, 0.15);
-    }
-
-    .project-categories {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .category-badge {
-      padding: 0.5rem 1.2rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .category-pc {
-      background: rgba(59, 130, 246, 0.2);
-      color: #60a5fa;
-    }
-
-    .category-mobile {
-      background: rgba(139, 92, 246, 0.2);
-      color: #a78bfa;
-    }
-
-    .category-ai {
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
-    }
-
-    .category-web {
-      background: rgba(239, 68, 68, 0.2);
-      color: #fca5a5;
-    }
-
-    .project-content {
-      padding: 2.2rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      line-height: 1.3;
-    }
-
-    .project-title i {
-      color: var(--accent);
-    }
-
-    .project-description {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 1.8rem;
-      font-size: 1.05rem;
-      flex-grow: 1;
-    }
-
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .meta-item i {
-      color: var(--accent);
-    }
-
-    /* ===== TECNOLOGÍAS MEJORADAS ===== */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-    }
-
-    .tech-badge {
-      padding: 0.6rem 1.1rem;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
-    }
-
-    .tech-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .tech-badge.java {
-      background: linear-gradient(135deg, #f89820, #e76f00);
-    }
-
-    .tech-badge.spring {
-      background: linear-gradient(135deg, #6db33f, #4a8c20);
-    }
-
-    .tech-badge.sql {
-      background: linear-gradient(135deg, #4479a1, #2c5a7a);
-    }
-
-    .tech-badge.js {
-      background: linear-gradient(135deg, #f7df1e, #d6ba00);
-      color: #333;
-    }
-
-    .tech-badge.html {
-      background: linear-gradient(135deg, #e34c26, #c13500);
-    }
-
-    .tech-badge.css {
-      background: linear-gradient(135deg, #264de4, #1a36b0);
-    }
-
-    .tech-badge.ai {
-      background: linear-gradient(135deg, #10b981, #059669);
-    }
-
-    .tech-badge.qt {
-      background: linear-gradient(135deg, #41cd52, #2ea83c);
-    }
-
-    .tech-badge.swift {
-      background: linear-gradient(135deg, #f05138, #d43a22);
-    }
-
-    .tech-badge.api {
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    }
-
-    .tech-badge.react {
-      background: linear-gradient(135deg, #61dafb, #21a1f1);
-    }
-
-    /* NUEVO: Badge para Docker */
-    .tech-badge.docker {
-      background: linear-gradient(135deg, #2496ed, #1d63a8);
-    }
-
-    .tech-badge.jwt {
-      background: linear-gradient(135deg, #000000, #333333);
-    }
-
-    /* ===== BOTONES MEJORADOS ===== */
-    .project-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: auto;
-    }
-
-    .project-btn {
-      flex: 1;
-      text-align: center;
-      padding: 0.9rem;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.7rem;
-      font-size: 0.95rem;
-    }
-
-    .btn-demo {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-code {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-    }
-
-    .btn-demo:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn-code:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--primary);
-      transform: translateY(-3px);
-    }
-
-    /* ===== ESTADÍSTICAS ANIMADAS ===== */
-    .stats-section {
-      background: rgba(30, 41, 59, 0.6);
-      border-radius: 25px;
-      padding: 4rem;
-      margin: 5rem 0;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 3rem;
-    }
-
-    .stat-card {
-      text-align: center;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 18px;
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
-    }
-
-    .stat-card:hover {
-      border-color: var(--primary);
-      background: rgba(37, 99, 235, 0.05);
-      transform: translateY(-5px);
-    }
-
-    .stat-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .stat-number {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .stat-label {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
-    /* ===== FOOTER MEJORADO ===== */
-    .footer {
-      background: rgba(15, 23, 42, 0.95);
-      border-top: 1px solid var(--border-color);
-      padding: 4rem 0 2rem;
-      margin-top: 6rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .footer-logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .footer-tagline {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-link {
-      width: 45px;
-      height: 45px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .footer-copyright {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1200px) {
-      .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      }
-
-      .hero-title {
-        font-size: 3.2rem;
-      }
-    }
-
-    @media (max-width: 992px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-        max-width: 600px;
-        margin: 0 auto 4rem;
-      }
-
-      .hero-title {
-        font-size: 2.8rem;
-      }
-
-      .nav-menu {
-        gap: 1.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 1.5rem;
-      }
-
-      .hero-title {
-        font-size: 2.4rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-
-      .filters-section {
-        padding: 1.5rem;
-      }
-
-      .stats-section {
-        padding: 2.5rem;
-      }
-
-      .project-actions {
-        flex-direction: column;
-      }
-
-      .nav-contact-btn span {
-        display: none;
-      }
-
-      .nav-contact-btn {
-        padding: 0.8rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .tech-stack-preview {
-        gap: 0.5rem;
-      }
-
-      .tech-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-      }
-
-      .filters-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .project-header {
-        height: 180px;
-      }
-    }
-
-    /* ===== ANIMACIONES ===== */
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) translateX(-50%);
-      }
-
-      50% {
-        transform: translateY(-10px) translateX(-50%);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.8s ease forwards;
-      opacity: 0;
-    }
-
-    .delay-1 {
-      animation-delay: 0.2s;
-    }
-
-    .delay-2 {
-      animation-delay: 0.4s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.6s;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- NAVEGACIÓN MEJORADA -->
-  <nav class="main-nav">
-    <div class="nav-container">
-      <div class="logo">
-        <div class="logo-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <div class="logo-text">Bryam Fernandez</div>
-      </div>
-      <div class="nav-menu">
-        <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-        <a href="proyectos.html" class="active"><i class="fas fa-project-diagram"></i> Proyectos</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero-section container">
-    <div class="hero-badge fade-in">
-      <i class="fas fa-star"></i>
-      Portafolio Técnico
-    </div>
-    <h1 class="hero-title fade-in">
-      Soluciones Innovadoras en Desarrollo
-    </h1>
-    <p class="hero-subtitle fade-in">
-      Especializado en sistemas backend, aplicaciones web/móvil con IA,
-      y soluciones robustas utilizando las tecnologías más modernas del mercado.
-    </p>
-
-    <div class="tech-stack-preview">
-      <div class="tech-icon java fade-in delay-1">
-        <i class="devicon-java-plain"></i>
-      </div>
-      <div class="tech-icon spring fade-in delay-1">
-        <i class="devicon-spring-plain"></i>
-      </div>
-      <div class="tech-icon sql fade-in delay-3">
-        <i class="devicon-mysql-plain"></i>
-      </div>
-      <div class="tech-icon ai fade-in delay-3">
-        <i class="fas fa-brain"></i>
-      </div>
-      <div class="tech-icon security fade-in delay-3">
-        <i class="fas fa-shield-halved"></i>
-      </div>
-      <div class="tech-icon docker fade-in delay-2">
-        <i class="devicon-docker-plain"></i>
-      </div>
-    </div>
-  </section>
-
-  <!-- FILTROS DE CATEGORÍAS -->
-  <section class="container">
-    <div class="filters-section fade-in">
-      <div class="filters-header">
-        <h2>Explora por Categoría</h2>
-        <p>Selecciona el tipo de proyecto que deseas ver</p>
-      </div>
-
-      <div class="filters-grid">
-        <div class="filter-card active" data-filter="all">
-          <i class="fas fa-layer-group filter-icon"></i>
-          <div class="filter-text">Todos</div>
-          <div class="filter-count">6</div>
-        </div>
-
-        <div class="filter-card" data-filter="mobile">
-          <i class="fas fa-mobile-alt filter-icon"></i>
-          <div class="filter-text">Móvil</div>
-          <div class="filter-count">2</div>
-        </div>
-
-        <div class="filter-card" data-filter="ai">
-          <i class="fas fa-brain filter-icon"></i>
-          <div class="filter-text">Inteligencia Artificial</div>
-          <div class="filter-count">2</div>
-        </div>
-
-        <div class="filter-card" data-filter="web">
-          <i class="fas fa-globe filter-icon"></i>
-          <div class="filter-text">Web</div>
-          <div class="filter-count">4</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN DE PROYECTOS -->
-  <section class="projects-section container">
-    <h2 class="section-title fade-in">Mis Proyectos Destacados</h2>
-
-    <div class="projects-grid">
-      <!-- PROYECTO 1: Nutrimama (SIN INTERNET) -->
-      <article class="project-card fade-in" data-category="mobile ai PC web">
-        <div class="project-header">
-          <i class="fas fa-heartbeat project-icon"></i>
-          <div class="project-categories">
-            <span class="category-badge category-mobile">
-              <i class="fas fa-mobile-alt"></i> Móvil
-            </span>
-            <span class="category-badge category-ai">
-              <i class="fas fa-brain"></i> IA
-            </span>
-            <span class="category-badge category-web">
-              <i class="fas fa-globe"></i> Web
-            </span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <!-- BADGE DE ESTADO: Sin internet -->
-          <div class="project-status">
-            <span class="status-badge offline">
-              <i class="fas fa-cloud"></i>
-              Proyecto fuera de servicio
-            </span>
-          </div>
-
-          <h3 class="project-title">
-            <i class="fas fa-baby"></i>
-            Nutrimama - Asistente IA para Embarazadas
-          </h3>
-
-          <div class="project-status">
-            <span class="status-badge in-progress">
-              <i class="fas fa-spinner fa-pulse"></i>
-              App in progress
-            </span>
-          </div>
-
-          <p class="project-description">
-            Plataforma multiplataforma con inteligencia artificial para seguimiento integral del embarazo.
-            Sistema de recomendaciones personalizadas, calendario de actividades y monitoreo de salud materna.
-          </p>
-
-          <div class="project-meta">
-            <div class="meta-item">
-              <i class="fas fa-calendar-alt"></i>
-              <span>2025</span>
-            </div>
-            <div class="meta-item">
-              <i class="fas fa-clock"></i>
-              <span>2 meses</span>
-            </div>
-          </div>
-
-          <div class="tech-stack">
-            <span class="tech-badge java">
-              <i class="devicon-java-plain"></i> Java
-            </span>
-            <span class="tech-badge spring">
-              <i class="devicon-spring-plain"></i> Spring Boot
-            </span>
-            <span class="tech-badge sql">
-              <i class="devicon-mysql-plain"></i> MySQL
-            </span>
-            <span class="tech-badge css">
-              <i class="devicon-css3-plain"></i> CSS
-            </span>
-            <span class="tech-badge html">
-              <i class="devicon-html5-plain"></i> Html
-            </span>
-            <span class="tech-badge js">
-              <i class="devicon-javascript-plain"></i> JavaScript
-            </span>
-            <span class="tech-badge ai">
-              <i class="fas fa-brain"></i> Ollama IA
-            </span>
-          </div>
-
-          <div class="project-actions">
-            <a href="progreso.html" class="project-btn btn-demo">
-              <i class="fas fa-play-circle"></i>
-              Ver Demo
-            </a>
-            <a href="https://github.com/Bryam-Fernandez/Nutrimama" class="project-btn btn-code">
-              <i class="fab fa-github"></i>
-              Ver Código
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROYECTO 2: WeatherFlow (SIN INTERNET) -->
-      <article class="project-card fade-in" data-category="mobile">
-        <div class="project-header">
-          <i class="fas fa-cloud-sun-rain project-icon"></i>
-          <div class="project-categories">
-            <span class="category-badge category-mobile">
-              <i class="fas fa-mobile-alt"></i> Móvil
-            </span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <!-- BADGE DE ESTADO: Sin internet -->
-          <div class="project-status">
-            <span class="status-badge offline">
-              <i class="fas fa-cloud"></i>
-              Proyecto fuera de servicio
-            </span>
-          </div>
-
-          <h3 class="project-title">
-            <i class="fas fa-temperature-high"></i>
-            WeatherFlow - App de Clima Inteligente
-          </h3>
-
-          <p class="project-description">
-            Aplicación móvil que utiliza APIs meteorológicas para pronósticos precisos.
-            Interfaz intuitiva con gráficos interactivos y alertas personalizadas.
-          </p>
-
-          <div class="project-meta">
-            <div class="meta-item">
-              <i class="fas fa-calendar-alt"></i>
-              <span>2026</span>
-            </div>
-            <div class="meta-item">
-              <i class="fas fa-clock"></i>
-              <span>1 mes</span>
-            </div>
-          </div>
-
-          <div class="tech-stack">
-            <span class="tech-badge swift">
-              <i class="devicon-swift-plain"></i> Swift
-            </span>
-            <span class="tech-badge api">
-              <i class="fas fa-cloud"></i> REST API
-            </span>
-            <span class="tech-badge css">
-              <i class="devicon-css3-plain"></i> SwiftUI
-            </span>
-          </div>
-
-          <div class="project-actions">
-            <a href="progreso.html" class="project-btn btn-demo">
-              <i class="fas fa-mobile-alt"></i>
-              Ver App
-            </a>
-            <a href="https://github.com/DiegoCastilla12/ProyectoFinalMoviles2" class="project-btn btn-code">
-              <i class="fab fa-github"></i>
-              Ver Código
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROYECTO 3: SaludVit (EN INTERNET) -->
-      <article class="project-card fade-in" data-category="web">
-        <div class="project-header">
-          <i class="fas fa-hospital project-icon"></i>
-          <div class="project-categories">
-            <span class="category-badge category-web">
-              <i class="fas fa-globe"></i> web
-            </span>
-          </div>
-        </div>
-
-        <div class="project-content">
-          <!-- BADGE DE ESTADO: En internet (DESTACADO) -->
-          <div class="project-status">
-            <span class="status-badge online">
-              <i class="fas fa-globe"></i>
-              Proyecto en internet
-            </span>
-          </div>
-
-          <h3 class="project-title">
-            <i class="fas fa-hospital"></i>
-            SaludVit - Sistema web de gestión de clínicas
-          </h3>
-
-          <div class="project-status">
-            <span class="status-badge in-progress">
-              <i class="fas fa-spinner fa-pulse"></i>
-              App in progress
-            </span>
-          </div>
-
-          <p class="project-description">
-            Aplicación web para gestión de clínicas médicas.
-            Sistema de administración de pacientes, médicos, citas, tratamientos y expedientes.
-          </p>
-
-          <div class="project-meta">
-            <div class="meta-item">
-              <i class="fas fa-calendar-alt"></i>
-              <span>2025</span>
-            </div>
-            <div class="meta-item">
-              <i class="fas fa-clock"></i>
-              <span>2 meses</span>
-            </div>
-          </div>
-
-          <div class="tech-stack">
-            <span class="tech-badge java">
-              <i class="devicon-java-plain"></i> Java
-            </span>
-            <span class="tech-badge spring">
-              <i class="devicon-spring-plain"></i> Spring Boot
-            </span>
-            <span class="tech-badge sql">
-              <i class="devicon-mysql-plain"></i> MySQL
-            </span>
-            <span class="tech-badge jwt">
-              <i class="devicon-jwt-plain"></i> JWT
-            </span>
-            <span class="tech-badge css">
-              <i class="devicon-css3-plain"></i> CSS
-            </span>
-            <span class="tech-badge html">
-              <i class="devicon-html5-plain"></i> Html
-            </span>
-            <span class="tech-badge js">
-              <i class="devicon-javascript-plain"></i> JavaScript
-            </span>
-            <!-- NUEVO: Badge de Docker -->
-            <span class="tech-badge docker">
-              <i class="devicon-docker-plain"></i> Docker
-            </span>
-          </div>
-
-          <div class="project-actions">
-            <a href="https://saludvital-uubz.onrender.com" class="project-btn btn-demo">
-              <i class="fas fa-mobile-alt"></i>
-              Ver App
-            </a>
-            <a href="https://github.com/Bryam-Fernandez/SaludVital" class="project-btn btn-code">
-              <i class="fab fa-github"></i>
-              Ver Código
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ESTADÍSTICAS -->
-  <section class="container">
-    <div class="stats-section fade-in">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-project-diagram"></i>
-          </div>
-          <div class="stat-number" data-count="3">0</div>
-          <div class="stat-label">Proyectos Completados</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <div class="stat-number" data-count="10">0+</div>
-          <div class="stat-label">Tecnologías</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <div class="stat-number" data-count="4">0</div>
-          <div class="stat-label">Plataformas Diferentes</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-database"></i>
-          </div>
-          <div class="stat-number" data-count="3">0</div>
-          <div class="stat-label">Bases de Datos</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div class="footer-logo">Bryam Fernandez</div>
-          <p class="footer-tagline">
-            Desarrollador especializado en crear soluciones innovadoras
-            utilizando las tecnologías más modernas del mercado.
-          </p>
-          <div class="footer-social">
-            <a href="https://github.com/Bryam-Fernandez" class="social-link">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com" class="social-link">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem;">
-            <i class="fas fa-map-marker-alt"></i> Enlaces Rápidos
-          </h3>
-          <ul style="list-style: none; padding: 0;">
-            <li><a href="index.html"
-                style="color: var(--text-secondary); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
-                <i class="fas fa-chevron-right"></i> Inicio
-              </a></li>
-            <li><a href="proyectos.html"
-                style="color: var(--accent); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
-                <i class="fas fa-chevron-right"></i> Proyectos
-              </a></li>
-            <li><a href="#habilidades"
-                style="color: var(--text-secondary); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
-                <i class="fas fa-chevron-right"></i> Habilidades
-              </a></li>
-            <li><a href="#contacto"
-                style="color: var(--text-secondary); text-decoration: none; display: block; padding: 0.5rem 0; transition: color 0.3s;">
-                <i class="fas fa-chevron-right"></i> Contacto
-              </a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem;">
-            <i class="fas fa-envelope"></i> Contacto: 
-          </h3>
-          <p style="color: var(--text-muted); line-height: 1.6;">
-            <i class="fas fa-envelope"></i> bryamfernandezuriarte22@gmail.com<br>
-            <i class="fas fa-phone"></i> +51 952 028 870<br>
-            <i class="fas fa-map-marker-alt"></i> Lima, Perú
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-copyright">
-        © 2024 Bryam Fernandez. Todos los derechos reservados.
-        Desarrollado con <i class="fas fa-heart" style="color: var(--accent);"></i> y código.
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Configuración de filtros
-      const filterCards = document.querySelectorAll('.filter-card');
-      const projectCards = document.querySelectorAll('.project-card');
-
-      filterCards.forEach(card => {
-        card.addEventListener('click', function () {
-          const filter = this.getAttribute('data-filter');
-
-          // Actualizar filtros activos
-          filterCards.forEach(c => c.classList.remove('active'));
-          this.classList.add('active');
-
-          // Filtrar proyectos
-          projectCards.forEach(project => {
-            const categories = project.getAttribute('data-category').split(' ');
-
-            if (filter === 'all' || categories.includes(filter)) {
-              project.style.display = 'flex';
-              setTimeout(() => {
-                project.style.opacity = '1';
-                project.style.transform = 'translateY(0) scale(1)';
-              }, 10);
-            } else {
-              project.style.opacity = '0';
-              project.style.transform = 'translateY(20px) scale(0.95)';
-              setTimeout(() => {
-                project.style.display = 'none';
-              }, 300);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Técnico | Bryam Fernández</title>
+    <meta name="description" content="Proyectos destacados: backend, web, móvil e integraciones con IA.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bg: '#030305',
+                        surface: '#0a0a0f',
+                        surfaceHover: '#12121a',
+                        border: '#1f1f2e',
+                        accent: '#3b82f6',
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
             }
-          });
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #030305;
+            color: #e4e4e7;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background-color: #3b82f6;
+            color: #fff;
+        }
+
+        /* Background Grid Pattern */
+        .bg-grid-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-pill {
+            background: rgba(10, 10, 15, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Modern Bento Cards */
+        .modern-card {
+            background: linear-gradient(145deg, rgba(15, 15, 20, 0.8) 0%, rgba(10, 10, 15, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(59, 130, 246, 0.1);
+        }
+
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Glowing Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030305;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f1f2e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Elements -->
+    <div class="bg-grid-pattern"></div>
+    <div class="glow-orb bg-blue-600 w-[500px] h-[500px] top-[-10%] right-[-10%] animate-blob"></div>
+    <div class="glow-orb bg-indigo-600 w-[400px] h-[400px] bottom-[20%] left-[-5%] animate-blob" style="animation-delay: 2s;"></div>
+
+    <!-- Floating Navigation -->
+    <div class="fixed top-6 w-full z-50 flex justify-center px-4">
+        <nav class="glass-pill rounded-full px-6 py-3 flex items-center gap-8">
+            <a href="index.html" class="text-white font-display font-bold text-lg tracking-tight flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-xs">B</div>
+                Fernández
+            </a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
+                <a href="index.html" class="hover:text-white transition-colors">Inicio</a>
+                <a href="#" class="text-white transition-colors">Proyectos</a>
+                <a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a>
+            </div>
+            <a href="index.html#contacto" class="hidden md:inline-flex items-center justify-center px-5 py-2 text-sm font-medium text-white bg-white/10 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+                Hablemos
+            </a>
+        </nav>
+    </div>
+
+    <main class="relative pt-40 pb-24 min-h-screen flex flex-col">
+        <div class="max-w-7xl mx-auto px-6 w-full flex-grow">
+            
+            <!-- Page Header -->
+            <div class="animate-fade-in-up mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 mb-6">
+                    <i data-lucide="star" class="w-4 h-4"></i>
+                    Technical Portfolio
+                </div>
+                <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    Soluciones <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Innovadoras.</span>
+                </h1>
+                <p class="text-lg text-zinc-400 max-w-2xl font-light">
+                    Especializado en sistemas backend, aplicaciones con IA y soluciones robustas. Explora mi trayectoria técnica a través de estos proyectos destacados.
+                </p>
+            </div>
+
+            <!-- Filters & Stats -->
+            <div class="animate-fade-in-up flex flex-col md:flex-row justify-between items-center gap-6 mb-12" style="animation-delay: 0.1s;">
+                <div class="flex p-1 bg-surface border border-border rounded-full overflow-x-auto hide-scrollbar w-full md:w-auto">
+                    <button data-filter="all" class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all bg-blue-500/10 text-blue-400 whitespace-nowrap">Todos</button>
+                    <button data-filter="mobile" class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white whitespace-nowrap">Móvil</button>
+                    <button data-filter="ai" class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white whitespace-nowrap">IA</button>
+                    <button data-filter="web" class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white whitespace-nowrap">Web</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <!-- Nutrimama -->
+                <article class="modern-card p-8 group flex flex-col h-full" data-category="mobile ai web">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex flex-col gap-2">
+                            <span class="status-badge offline inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-500/10 text-red-400 text-[10px] font-mono uppercase tracking-wider border border-red-500/20">
+                                <i data-lucide="cloud-off" class="w-3 h-3"></i> Offline
+                            </span>
+                            <span class="status-badge in-progress inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-wider border border-blue-500/20">
+                                <i data-lucide="loader-2" class="w-3 h-3 animate-spin"></i> In Progress
+                            </span>
+                        </div>
+                        <div class="flex gap-2">
+                            <i data-lucide="smartphone" class="w-5 h-5 text-zinc-600"></i>
+                            <i data-lucide="brain" class="w-5 h-5 text-zinc-600"></i>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-display font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">Nutrimama</h3>
+                    <p class="text-zinc-400 text-sm mb-8 leading-relaxed font-light">
+                        Asistente IA para embarazadas. Plataforma multiplataforma con IA para seguimiento integral, recomendaciones personalizadas y monitoreo de salud materna.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Java</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Spring Boot</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">MySQL</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Ollama IA</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-border mt-auto">
+                        <a href="progreso.html" class="text-sm font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition-colors">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Demo
+                        </a>
+                        <a href="https://github.com/Bryam-Fernandez/Nutrimama" target="_blank" class="text-sm font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i> Código
+                        </a>
+                    </div>
+                </article>
+
+                <!-- WeatherFlow -->
+                <article class="modern-card p-8 group flex flex-col h-full" data-category="mobile">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="status-badge offline inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-500/10 text-red-400 text-[10px] font-mono uppercase tracking-wider border border-red-500/20">
+                            <i data-lucide="cloud-off" class="w-3 h-3"></i> Offline
+                        </span>
+                        <i data-lucide="cloud-sun" class="w-5 h-5 text-zinc-600"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-display font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">WeatherFlow</h3>
+                    <p class="text-zinc-400 text-sm mb-8 leading-relaxed font-light">
+                        App de clima inteligente. Utiliza APIs meteorológicas para pronósticos precisos con interfaz intuitiva y gráficos interactivos.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Swift</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">SwiftUI</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">REST API</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-border mt-auto">
+                        <a href="progreso.html" class="text-sm font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition-colors">
+                            <i data-lucide="smartphone" class="w-4 h-4"></i> Ver App
+                        </a>
+                        <a href="https://github.com/DiegoCastilla12/ProyectoFinalMoviles2" target="_blank" class="text-sm font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i> Código
+                        </a>
+                    </div>
+                </article>
+
+                <!-- SaludVit -->
+                <article class="modern-card p-8 group flex flex-col h-full" data-category="web">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex flex-col gap-2">
+                            <span class="status-badge online inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-mono uppercase tracking-wider border border-emerald-500/20">
+                                <i data-lucide="globe" class="w-3 h-3"></i> Online
+                            </span>
+                            <span class="status-badge in-progress inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-[10px] font-mono uppercase tracking-wider border border-blue-500/20">
+                                <i data-lucide="loader-2" class="w-3 h-3 animate-spin"></i> In Progress
+                            </span>
+                        </div>
+                        <i data-lucide="hospital" class="w-5 h-5 text-zinc-600"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-display font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">SaludVit</h3>
+                    <p class="text-zinc-400 text-sm mb-8 leading-relaxed font-light">
+                        Sistema web de gestión de clínicas. Administración integral de pacientes, médicos, citas y expedientes médicos con seguridad JWT.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Java</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Spring Boot</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">JWT</span>
+                        <span class="px-2.5 py-1 rounded bg-surface border border-border text-[10px] font-mono text-zinc-300">Docker</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-border mt-auto">
+                        <a href="https://saludvital-uubz.onrender.com" target="_blank" class="text-sm font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition-colors">
+                            <i data-lucide="external-link" class="w-4 h-4"></i> Ver App
+                        </a>
+                        <a href="https://github.com/Bryam-Fernandez/SaludVital" target="_blank" class="text-sm font-medium text-zinc-400 hover:text-white flex items-center gap-2 transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i> Código
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Stats Section -->
+            <section class="py-32 border-t border-border mt-24">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-8 rounded-2xl bg-surface/50 border border-border">
+                        <div class="text-4xl font-display font-bold text-white mb-2" data-count="3">0</div>
+                        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Proyectos</div>
+                    </div>
+                    <div class="text-center p-8 rounded-2xl bg-surface/50 border border-border">
+                        <div class="text-4xl font-display font-bold text-white mb-2" data-count="10">0</div>
+                        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Tecnologías</div>
+                    </div>
+                    <div class="text-center p-8 rounded-2xl bg-surface/50 border border-border">
+                        <div class="text-4xl font-display font-bold text-white mb-2" data-count="3">0</div>
+                        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Plataformas</div>
+                    </div>
+                    <div class="text-center p-8 rounded-2xl bg-surface/50 border border-border">
+                        <div class="text-4xl font-display font-bold text-white mb-2" data-count="2">0</div>
+                        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Bases de Datos</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-border py-12 text-center relative z-10 bg-bg">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-left mb-12">
+            <div>
+                <div class="text-xl font-display font-bold text-white mb-4">Bryam Fernández</div>
+                <p class="text-zinc-500 text-sm leading-relaxed">
+                    Desarrollador especializado en crear soluciones innovadoras utilizando las tecnologías más modernas del mercado.
+                </p>
+            </div>
+            <div>
+                <div class="text-sm font-mono text-zinc-400 uppercase mb-4 tracking-widest">Enlaces</div>
+                <ul class="space-y-2 text-sm text-zinc-500">
+                    <li><a href="index.html" class="hover:text-blue-400 transition-colors">Inicio</a></li>
+                    <li><a href="proyectos.html" class="hover:text-blue-400 transition-colors">Proyectos</a></li>
+                    <li><a href="index.html#contacto" class="hover:text-blue-400 transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="text-sm font-mono text-zinc-400 uppercase mb-4 tracking-widest">Contacto</div>
+                <div class="text-sm text-zinc-500 space-y-2">
+                    <p>bryamfernandezuriarte22@gmail.com</p>
+                    <p>+51 952 028 870</p>
+                    <p>Lima, Perú</p>
+                </div>
+            </div>
+        </div>
+        <p class="text-zinc-600 text-xs font-mono">
+            &copy; <span id="year"></span> Bryam Fernández. Engineered with precision.
+        </p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Filter Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('article[data-category]');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                
+                // Update UI
+                filterButtons.forEach(b => {
+                    b.className = "filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white whitespace-nowrap";
+                });
+                btn.className = "filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all bg-blue-500/10 text-blue-400 whitespace-nowrap";
+
+                // Filter cards
+                projectCards.forEach(card => {
+                    const categories = card.dataset.category.split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
+                        card.style.display = 'flex';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
         });
-      });
 
-      // Animación de estadísticas
-      const statNumbers = document.querySelectorAll('.stat-number');
+        // Stats Animation
+        const stats = document.querySelectorAll('[data-count]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.count);
+                    let current = 0;
+                    const increment = target / 30;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            entry.target.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = Math.floor(current);
+                        }
+                    }, 50);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const statNumber = entry.target;
-            const target = parseInt(statNumber.getAttribute('data-count'));
-            const isPlus = statNumber.textContent.includes('+');
-            let current = 0;
-            const increment = target / 50;
-
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                clearInterval(timer);
-                statNumber.textContent = isPlus ? target + '+' : target;
-              } else {
-                statNumber.textContent = Math.floor(current);
-              }
-            }, 30);
-
-            observer.unobserve(statNumber);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      statNumbers.forEach(stat => observer.observe(stat));
-
-      // Animación de entrada mejorada
-      const fadeElements = document.querySelectorAll('.fade-in');
-
-      fadeElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, 100 + index * 100);
-      });
-
-      // Actualizar año en footer
-      const yearSpan = document.querySelector('.footer-copyright');
-      if (yearSpan) {
-        const currentYear = new Date().getFullYear();
-        yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', currentYear);
-      }
-
-      // Efecto hover para tarjetas
-      projectCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          card.style.zIndex = '10';
-        });
-
-        card.addEventListener('mouseleave', () => {
-          setTimeout(() => {
-            card.style.zIndex = '1';
-          }, 300);
-        });
-      });
-    });
-  </script>
+        stats.forEach(stat => observer.observe(stat));
+    </script>
 </body>
-
 </html>
